@@ -1,4 +1,4 @@
-var sim = angular.module("sim", ['ui.router', 'ui.bootstrap']);
+var sim = angular.module("sim", ['ui.router', 'ui.bootstrap', 'rzModule']);
 
 sim.config(function($urlRouterProvider, $stateProvider){
   $urlRouterProvider.otherwise('/portfolio');

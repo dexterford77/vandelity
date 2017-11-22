@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="sim">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title>Fideligard Historical Portfolio Simulator</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/custom.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/6.4.1/rzslider.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/6.4.1/rzslider.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
 </head>
 
-<body ng-cloak class="container">
+<body ng-cloak>
 
 <nav>
-  <h1>Fideligard Historical Portfolio Simulator</h1>
-  <a ui-sref="portfolio">Portfolio</a>
-  <a ui-sref="trade">Trade</a>
-  <a ui-sref="transactions">Transactions</a>
+  <div class="container">
+    <h1>Fideligard Historical Portfolio Simulator</h1>
+    <a ui-sref="portfolio">Portfolio</a>
+    <a ui-sref="trade">Trade</a>
+    <a ui-sref="transactions">Transactions</a>
+  </div>
 </nav>
 
-<main class="row">
-  <stocks class="col-md-4"></stocks>
-  <ui-view class="col-md-8"></ui-view>
+<main class="container">
+  <div class="row">
+    <stocks class="col-md-4"></stocks>
+    <div class="col-md-8 right-container">
+      <div class="row" >
+        <date-picker class="col-md-12" ng-controller="DatesCtrl" ng-init="init()">
+        </date-picker>
+      </div>
+      <div class="row">
+        <ui-view class="col-md-12"></ui-view>
+      </div>
+    </div>
+  </div>
 </main>
 
 </body>
@@ -30,11 +44,16 @@
 <script src="js/app.js"></script>
 
 <!-- Services -->
+<script src="js/services/date_service.js"></script>
+<script src="js/services/stock_service.js"></script>
 
 <!-- Controllers -->
+<script src="js/controllers/dates_controller.js"></script>
+<script src="js/controllers/stocks_controller.js"></script>
 
 <!-- Directives -->
 <script src="js/directives/stocks.js"></script>
+<script src="js/directives/date_picker.js"></script>
 
 <!-- Filters -->
 

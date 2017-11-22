@@ -1,7 +1,7 @@
 sim.directive("stocks", [function(){
   return {
     restrict: 'E',
-    scope: {},
+    scope: true,
     templateUrl: "js/directives/stocks.html"
   }
 }]);

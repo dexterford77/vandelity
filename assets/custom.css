@@ -1,0 +1,28 @@
+nav {
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.right-container {
+  margin-top: 20px;
+}
+
+/* Date Picker */
+
+.custom-slider.rzslider .rz-pointer {
+  width: 8px;
+  height: 16px;
+  top: auto; /* to remove the default positioning */
+  bottom: 0;
+  background-color: #333;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.custom-slider.rzslider .rz-pointer:after {
+  display: none;
+}
+
+.custom-slider.rzslider .rz-bubble {
+  bottom: 14px;
+}
