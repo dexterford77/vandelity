@@ -4,13 +4,13 @@ sim.config(function($urlRouterProvider, $stateProvider){
   $urlRouterProvider.otherwise('/portfolio');
   $stateProvider.state("portfolio", {
     url: "/portfolio",
-    templateUrl: "js/partials/portfolio.html"
+    templateUrl: "js/templates/portfolio.html"
   }).state("trade", {
     url: "/trade",
-    templateUrl: "js/partials/trade.html"
+    templateUrl: "js/templates/trade.html"
   }).state("transactions", {
     url: "/transactions",
-    templateUrl: "js/partials/transactions.html"
+    templateUrl: "js/templates/transactions.html"
   });
 });
 

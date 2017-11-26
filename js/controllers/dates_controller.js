@@ -1,5 +1,5 @@
-sim.controller("DatesCtrl", ['$scope', 'DateService',
-  function($scope, DateService) {
+sim.controller("DatesCtrl", ['$scope', 'DateService', '$rootScope',
+  function($scope, DateService, $rootScope) {
 
     $scope.dates = ["10/1/2017", "10/31/2017"];
 
@@ -18,7 +18,8 @@ sim.controller("DatesCtrl", ['$scope', 'DateService',
     };
 
     $scope.$watch('slider.value', function(newValue){
-      DateService.setCurrentDate(newValue);
+      DateService.setDate(newValue);
+      $rootScope.$broadcast('change.date');
     });
 
     $scope.slider = {

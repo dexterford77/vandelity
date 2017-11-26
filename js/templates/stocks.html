@@ -1,0 +1,24 @@
+<div ng-controller="StocksCtrl" ng-init="init()">
+
+  <h3>Stocks</h3>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Price</th>
+          <th>Trade</th>
+          <th>1d</th>
+          <th>7d</th>
+          <th>30d</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr stock-table-row ng-repeat="stock in tableData" stock="stock" date="date">
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

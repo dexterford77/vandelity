@@ -26,3 +26,9 @@ nav {
 .custom-slider.rzslider .rz-bubble {
   bottom: 14px;
 }
+
+/* Stocks */
+
+stocks tbody {
+  font-size: 12px;
+}
