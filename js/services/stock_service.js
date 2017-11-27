@@ -38,7 +38,11 @@ sim.service('StockService', ['$http', '$q', 'DateService',
         }, function(response) {
           console.log("RESPONSE FAILED");
           console.error(response);
-          // add fallback here
+          // fallback on hard-coded data in case of failure
+          console.log("Using hard-coded fallback data...");
+          _stockData = fallback_data;
+          console.log(_stockData);
+          return _stockData
         })
     }
 

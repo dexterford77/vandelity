@@ -5,10 +5,19 @@ sim.controller("StocksCtrl", ['$scope', 'StockService', 'DateService',
       $scope.getStocks();
     };
 
+    $scope.loading = true;
+
     $scope.getStocks = function() {
-      StockService.all().then(function(stocks){
+      StockService.all().then(function(stockData){
         $scope.tableData = StockService.formatStockData();
+        $scope.loading = false;
       });
+    };
+
+    $scope.symbolFilterValue = false;
+
+    $scope.changeSymbolFilter = function() {
+      $scope.symbolFilterValue = !($scope.symbolFilterValue);
     };
 
     $scope.$on('change.date', function() {
