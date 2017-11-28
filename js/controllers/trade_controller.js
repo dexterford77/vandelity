@@ -1,10 +1,6 @@
 sim.controller("TradeCtrl", ['$scope', 'StockService', 'TradeService', '$stateParams', '$state',
   function($scope, StockService, TradeService, $stateParams, $state) {
 
-    $scope.init = function() {
-      console.log("MEOW!");
-    }
-
     var _stocks = StockService.formatStockData();
 
     // convert params into newTrade

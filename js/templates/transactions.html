@@ -1,3 +1,34 @@
 <h3>Transactions</h3>
 
-Get some trans action, sister
+<div ng-controller="TransactionsCtrl" ng-init="init()">
+
+  <div ng-hide="{{transactions.length}}">
+    You haven't made any trades yet!
+  </div>
+
+  <div ng-show="{{transactions.length}}" class="table-responsive">
+    <h5 class="text-muted">Click on any column label to sort your trades by that criteria.</h5>
+    <table class="table table-striped table-hover">
+      <tr>
+        <th role="button" ng-click="changeSort('date')">
+          Date
+          <span class="{{sortDisplay('date')}}" aria-hidden="true">
+        </th>
+        <th role="button" ng-click="changeSort('type')">
+          Type
+          <span class="{{sortDisplay('type')}}" aria-hidden="true"></span>
+        </th>
+        <th role="button" ng-click="changeSort('quantity')">
+          Quantity
+          <span class="{{sortDisplay('quantity')}}" aria-hidden="true"></span>
+        </th>
+        <th role="button" ng-click="changeSort('price')">
+          Price
+          <span class="{{sortDisplay('price')}}" aria-hidden="true"></span>
+        </th>
+      </tr>
+      <tr transaction-table-row ng-repeat="transaction in transactions | orderBy : sortType : sortValue" transaction="transaction"></tr>
+    </table>
+  </div>
+
+</div>
