@@ -1,10 +1,6 @@
 sim.controller("TransactionsCtrl", ['$scope', 'TradeService',
   function($scope, TradeService) {
 
-    $scope.init = function() {
-      console.log("MEOW!");
-    }
-
     $scope.transactions = TradeService.getTrades();
 
     $scope.changeSort = function(col) {

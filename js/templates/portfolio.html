@@ -1,3 +1,44 @@
 <h3>Portfolio</h3>
 
-Eyup
+<div ng-controller="PortfolioCtrl">
+
+  <div ng-show="{{trades.length}}">
+    <div class="clearfix">
+      <h5 class="text-muted pull-right">as of {{date}}</h5>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-striped">
+      <tr>
+        <th>Cost Basis</th>
+        <th>Current Value</th>
+        <th>Profit/Loss</th>
+      </tr>
+      <tr>
+        <td>{{ overview.costBasis | currency }}</td>
+        <td>{{ overview.currentVal | currency }}</td>
+        <td>{{ overview.costBasis - overview.currentVal | currency }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-striped">
+      <tr>
+        <th>Symbol</th>
+        <th>Quantity</th>
+        <th>Cost Basis</th>
+        <th>Current Value</th>
+        <th>Profit/Loss</th>
+        <th>Current Price</th>
+        <th>1d</th>
+        <th>7d</th>
+        <th>30d</th>
+        <th>Trade</th>
+      </tr>
+      <tr portfolio-positions-table-row ng-repeat="position in positions" position="position" date="date"></tr>
+    </table>
+  </div>
+
+</div>

@@ -1,5 +1,5 @@
-sim.controller("TradeCtrl", ['$scope', 'StockService', 'TradeService', '$stateParams', '$state',
-  function($scope, StockService, TradeService, $stateParams, $state) {
+sim.controller("TradeCtrl", ['$scope', 'StockService', 'TradeService', '$stateParams', '$state', 'PortfolioService',
+  function($scope, StockService, TradeService, $stateParams, $state, PortfolioService) {
 
     var _stocks = StockService.formatStockData();
 
@@ -23,7 +23,9 @@ sim.controller("TradeCtrl", ['$scope', 'StockService', 'TradeService', '$statePa
         // if buying: make sure cash can cover trade
         return $scope.cost() < $scope.cash ? true : false
       } else {
-        // PortfolioService.getPositions ???
+        PortfolioService.getPositions();
+        var position = PortfolioService.findPos($scope.newTrade.symbol);
+        return position && (position.quantity >= $scope.newTrade.quantity) ? true : false
       }
     };
 
