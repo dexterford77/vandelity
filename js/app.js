@@ -7,7 +7,12 @@ sim.config(function($urlRouterProvider, $stateProvider){
     templateUrl: "js/templates/portfolio.html"
   }).state("trade", {
     url: "/trade",
-    templateUrl: "js/templates/trade.html"
+    templateUrl: "js/templates/trade.html",
+    params: { // default params
+      date: "2017-10-01",
+      symbol: "MSFT",
+      price: "49.44"
+    }
   }).state("transactions", {
     url: "/transactions",
     templateUrl: "js/templates/transactions.html"

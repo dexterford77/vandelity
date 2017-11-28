@@ -1,3 +1,51 @@
 <h3>Trade</h3>
 
-Trade it son
+<div class="row" ng-controller="TradeCtrl" ng-init="init()">
+
+  <div class="col-md-7">
+    <div class="table-responsive">
+      <form name="tradeForm">
+        <table class="table">
+          <tr>
+            <td><label>Symbol</label></td>
+            <td>{{newTrade.symbol}}</td>
+          </tr>
+          <tr>
+            <td><label>Buy/Sell</label></td>
+            <td>
+              <select class="form-control" ng-model="newTrade.type" ng-options="type.value as type.name for type in [{ name: 'Buy', value: true }, { name: 'Sell', value: false }]">
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Quantity</label></td>
+            <td><input class="form-control" type="number" ng-model="newTrade.quantity"></td>
+          </tr>
+          <tr>
+            <td><label>Date</label></td>
+            <td>
+              {{newTrade.date}}
+            </td>
+          </tr>
+          <tr>
+            <td><label>Price</label></td>
+            <td>{{newTrade.price | currency}}</td>
+          </tr>
+          <tr>
+            <td><label>Cost</label></td>
+            <td>{{cost() | currency}}</td>
+          </tr>
+        </table>
+        <button ng-disabled="!orderStatus()" ng-click="submitTrade()" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <h4><label>Cash Available</label></h4>
+    <p>{{cash | currency}}</p>
+    <h4><label>Order Status</label></h4>
+    <h5 class="{{orderStatus() ? 'text-success' : 'text-danger'}}"><strong>{{orderStatus() ? 'VALID' : 'INVALID'}}</strong></h5>
+  </div>
+
+</div>
