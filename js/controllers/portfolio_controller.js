@@ -9,11 +9,13 @@ sim.controller("PortfolioCtrl", ['$scope', 'TradeService', 'DateService', 'Portf
 
     $scope.overview = PortfolioService.getOverview();
 
+    $scope.cash = TradeService.getCash();
+
     $scope.$on('change.date', function() {
       $scope.trades = TradeService.getTrades();
       $scope.date = DateService.getCurrentHyphen();
       $scope.positions = PortfolioService.getPositions();
-      $scope.overview = PortfolioServie.getOverview();
+      $scope.overview = PortfolioService.getOverview();
     });
 
 }]);

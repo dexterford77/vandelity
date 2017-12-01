@@ -1,4 +1,7 @@
-<h3>Portfolio</h3>
+<div class="clearfix">
+  <h3 class="pull-left">Portfolio</h3>
+  <view-selector class="pull-right"></view-selector>
+</div>
 
 <div ng-controller="PortfolioCtrl">
 
@@ -13,12 +16,14 @@
       <tr>
         <th>Cost Basis</th>
         <th>Current Value</th>
-        <th>Profit/Loss</th>
+        <th>Profit / Loss</th>
+        <th>Cash Available</th>
       </tr>
       <tr>
         <td>{{ overview.costBasis | currency }}</td>
         <td>{{ overview.currentVal | currency }}</td>
         <td>{{ overview.costBasis - overview.currentVal | currency }}</td>
+        <td>{{ cash | currency }}</td>
       </tr>
     </table>
   </div>
@@ -30,7 +35,7 @@
         <th>Quantity</th>
         <th>Cost Basis</th>
         <th>Current Value</th>
-        <th>Profit/Loss</th>
+        <th>Profit / Loss</th>
         <th>Current Price</th>
         <th>1d</th>
         <th>7d</th>
@@ -39,6 +44,11 @@
       </tr>
       <tr portfolio-positions-table-row ng-repeat="position in positions" position="position" date="date"></tr>
     </table>
+
+    <div ng-hide="positions.length">
+      Nothing here yet! Make some trades!
+    </div>
+
   </div>
 
 </div>

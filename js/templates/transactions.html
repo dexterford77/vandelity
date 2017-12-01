@@ -1,4 +1,7 @@
-<h3>Transactions</h3>
+<div class="clearfix">
+  <h3 class="pull-left">Transactions</h3>
+  <view-selector class="pull-right"></view-selector>
+</div>
 
 <div ng-controller="TransactionsCtrl">
 
@@ -13,6 +16,10 @@
         <th role="button" ng-click="changeSort('date')">
           Date
           <span class="{{sortDisplay('date')}}" aria-hidden="true">
+        </th>
+        <th role="button" ng-click="changeSort('symbol')">
+          Symbol
+          <span class="{{sortDisplay('symbol')}}" aria-hidden="true">
         </th>
         <th role="button" ng-click="changeSort('type')">
           Type

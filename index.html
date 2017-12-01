@@ -13,12 +13,16 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 </head>
 
-<body ng-cloak>
+<body ng-cloak class="container">
 
-<h1>Vandelity Historical Portfolio Simulator</h1>
+<div class="row header">
+  <h1 class="col-md-12">
+    <img src="assets/logo.png" height="45px" width="45px" />
+    Vandelity Historical Portfolio Simulator
+  </h1>
+</div>
 
-<main class="container">
-  <div class="row">
+<main class="row">
     <stocks class="col-md-5"></stocks>
     <div class="col-md-7 right-container">
       <div class="row" >
@@ -29,7 +33,6 @@
         <ui-view class="col-md-12"></ui-view>
       </div>
     </div>
-  </div>
 </main>
 
 </body>
@@ -52,6 +55,7 @@
 <script src="js/controllers/trade_controller.js"></script>
 <script src="js/controllers/transactions_controller.js"></script>
 <script src="js/controllers/portfolio_controller.js"></script>
+<script src="js/controllers/view_selector_controller.js"></script>
 
 <!-- Directives -->
 <script src="js/directives/date_picker.js"></script>
@@ -59,6 +63,7 @@
 <script src="js/directives/stock_table_row.js"></script>
 <script src="js/directives/transaction_table_row.js"></script>
 <script src="js/directives/portfolio_positions_table_row.js"></script>
+<script src="js/directives/view_selector.js"></script>
 
 <!-- Filters -->
 

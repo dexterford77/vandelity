@@ -31,7 +31,6 @@ sim.controller("TradeCtrl", ['$scope', 'StockService', 'TradeService', '$statePa
 
     $scope.submitTrade = function() {
       // validate + store in Trade service
-      console.log($scope.newTrade);
       if($scope.orderStatus()) {
         TradeService.save($scope.newTrade);
         $state.go('transactions');

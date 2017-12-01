@@ -13,8 +13,8 @@ sim.service('PortfolioService', ['DateService', 'TradeService', 'StockService',
 
     var _getPositions = function() {
       var filtered = _filterBeforeDate();
-      filtered.forEach(function(trade){
-        var position = this.findPos(trade.symbol);
+      filtered.forEach(function(trade) {
+        var position = _findPos(trade.symbol);
         // if position obj doesn't exist for trades for this symbol, create + populate with price info relative to selected date
         if (!position) {
           var currentPrices = _findPrices(trade.symbol);
@@ -33,9 +33,9 @@ sim.service('PortfolioService', ['DateService', 'TradeService', 'StockService',
         }
         // collect trade info
         var type = trade.type ? 1 : -1;
-        position.quantity += type * trade.quantity;
-        position.costBasis += type * trade.quantity * trade.price;
-        position.currentVal += position.quantity * position.current;
+        position.quantity = type * trade.quantity;
+        position.costBasis = type * trade.quantity * trade.price;
+        position.currentVal = position.quantity * position.current;
       });
     };
 
@@ -55,10 +55,14 @@ sim.service('PortfolioService', ['DateService', 'TradeService', 'StockService',
       })
     };
 
-    this.findPos = function(sym) {
+    var _findPos = function(sym) {
       return _positions.find(function(position) {
         return position.symbol === sym
       })
+    };
+
+    this.findPos = function(sym) {
+      _findPos(sym);
     }
 
     this.getPositions = function() {
@@ -72,8 +76,8 @@ sim.service('PortfolioService', ['DateService', 'TradeService', 'StockService',
         currentVal: 0
       }
       _positions.forEach(function(position) {
-        _overview.costBasis += position.costBasis;
-        _overview.currentVal += position.currentVal;
+        _overview.costBasis = position.costBasis;
+        _overview.currentVal = position.currentVal;
       });
     };
 

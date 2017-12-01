@@ -1,6 +1,9 @@
-nav {
-  border-bottom: 1px solid black;
-  margin-bottom: 10px;
+.header {
+  border-bottom: 1px black solid;
+}
+
+h1 img {
+  margin-bottom: 8px;
 }
 
 .right-container {
@@ -12,6 +15,10 @@ nav {
   height: 50%;
   width: 50%;
   margin: 0 auto;
+}
+
+view-selector {
+  margin-top: 15px;
 }
 
 /* Date Picker */

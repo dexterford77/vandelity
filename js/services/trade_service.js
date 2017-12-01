@@ -3,7 +3,7 @@ sim.service('TradeService', [
 
     var _trades = [];
 
-    var _cash = 1000000; // initial amount to play with
+    var _cash = 1000000;
 
     this.save = function(newTrade) {
       _trades.push(newTrade);
@@ -13,9 +13,9 @@ sim.service('TradeService', [
     var _registerTrade = function(trade) {
       var amount = trade.quantity * trade.price;
       if(trade.type) { // buy
-        _cash += amount;
-      } else { // sell
         _cash -= amount;
+      } else { // sell
+        _cash += amount;
       }
     };
 
