@@ -7,36 +7,61 @@ sim.service('PortfolioService', ['DateService', 'TradeService', 'StockService',
 
     var _trades = TradeService.getTrades();
 
-    var _overview = []; // data for upper table
+    var _overview = [];
 
-    var _positions = []; // data for lower table
+    var _positions = [];
 
     var _getPositions = function() {
-      var filtered = _filterBeforeDate();
-      filtered.forEach(function(trade) {
-        var position = _findPos(trade.symbol);
-        // if position obj doesn't exist for trades for this symbol, create + populate with price info relative to selected date
-        if (!position) {
-          var currentPrices = _findPrices(trade.symbol);
-          _positions.push(
-            position = {
-              symbol: trade.symbol,
-              quantity: 0,
-              costBasis: 0,
-              currentVal: 0,
-              // price info relative to current date
-              current: currentPrices.price,
-              one: currentPrices.one,
-              seven: currentPrices.seven,
-              thirty: currentPrices.thirty
-          });
+      var groupedTrades = _groupTradesBySym();
+      _aggregateGroupedTrades(groupedTrades);
+    };
+
+    var _aggregateGroupedTrades = function(groupedTrades) {
+      var positions = [];
+      groupedTrades.forEach(function(tradeGroup) {
+        var symbol = tradeGroup[0].symbol;
+        var quantity = 0;
+        var costBasis = 0;
+        var currentVal = 0;
+        var currentPrices = _findPrices(symbol);
+        tradeGroup.forEach(function(trade) {
+          // buy = 1, sell = -1
+          var type = trade.type ? 1 : -1;
+          quantity += trade.quantity * type;
+          costBasis += trade.price * trade.quantity * type;
+          currentVal += trade.quantity * currentPrices.price * type;
+        });
+        var position = {
+          symbol: symbol,
+          quantity: quantity,
+          costBasis: costBasis,
+          currentVal: currentVal,
+          current: currentPrices.price,
+          one: currentPrices.one,
+          seven: currentPrices.seven,
+          thirty: currentPrices.thirty
         }
-        // collect trade info
-        var type = trade.type ? 1 : -1;
-        position.quantity = type * trade.quantity;
-        position.costBasis = type * trade.quantity * trade.price;
-        position.currentVal = position.quantity * position.current;
+        positions.push(position);
       });
+      _positions = positions;
+    };
+
+    var _groupTradesBySym = function() {
+      var groupedTrades = [];
+      var syms = StockService.allSymbols();
+      syms.forEach(function(sym) {
+        var sameSymTrades = _findTradesOfSameSym(sym);
+        if (sameSymTrades.length > 0) {
+          groupedTrades.push(sameSymTrades);
+        }
+      });
+      return groupedTrades
+    };
+
+    var _findTradesOfSameSym = function(sym) {
+      return _trades.filter(function(trade) {
+        return trade.symbol === sym
+      })
     };
 
     var _filterBeforeDate = function() {
@@ -76,8 +101,8 @@ sim.service('PortfolioService', ['DateService', 'TradeService', 'StockService',
         currentVal: 0
       }
       _positions.forEach(function(position) {
-        _overview.costBasis = position.costBasis;
-        _overview.currentVal = position.currentVal;
+        _overview.costBasis += position.costBasis;
+        _overview.currentVal += position.currentVal;
       });
     };
 

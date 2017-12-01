@@ -22,7 +22,7 @@
       <tr>
         <td>{{ overview.costBasis | currency }}</td>
         <td>{{ overview.currentVal | currency }}</td>
-        <td>{{ overview.costBasis - overview.currentVal | currency }}</td>
+        <td>{{ overview.currentVal - overview.costBasis | currency }}</td>
         <td>{{ cash | currency }}</td>
       </tr>
     </table>
@@ -35,12 +35,12 @@
         <th>Quantity</th>
         <th>Cost Basis</th>
         <th>Current Value</th>
-        <th>Profit / Loss</th>
+        <th>Profit /Loss</th>
         <th>Current Price</th>
+        <th>Trade</th>
         <th>1d</th>
         <th>7d</th>
         <th>30d</th>
-        <th>Trade</th>
       </tr>
       <tr portfolio-positions-table-row ng-repeat="position in positions" position="position" date="date"></tr>
     </table>

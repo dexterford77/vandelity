@@ -8,7 +8,7 @@ sim.service('StockService', ['$http', '$q', 'DateService',
     var _stockData = {};
 
     var _query = function(stockSymbol) {
-      var endpoint = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol="
+      var endpoint = "https://www.bananaslamma-alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol="
       + stockSymbol +
       "&outputsize=compact&apikey=4IFXYSZXA7LMMAGK";
       return endpoint
@@ -95,6 +95,10 @@ sim.service('StockService', ['$http', '$q', 'DateService',
         })
       }
       return output
+    }
+
+    this.allSymbols = function() {
+      return _stockSymbols
     }
  
 }]);
