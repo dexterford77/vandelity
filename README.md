@@ -7,7 +7,7 @@ Just a personal toy project demo of AngularJS with UI-Router injected for better
 
 ### Current Status
 
-Progress suspended. Other projects taking precedent.
+Progress suspended. Other projects have taken precedent.
 
 Launched Demo
 --------
