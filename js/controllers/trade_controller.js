@@ -23,6 +23,7 @@ sim.controller("TradeCtrl", ['$scope', 'StockService', 'TradeService', '$statePa
         // if buying: make sure cash can cover trade
         return $scope.cost() < $scope.cash ? true : false
       } else {
+        // if selling, check # of shares at current date (should be above 0 and/or amount of share's you're wanting to sell)
         PortfolioService.getPositions();
         var position = PortfolioService.findPos($scope.newTrade.symbol);
         return position && (position.quantity >= $scope.newTrade.quantity) ? true : false

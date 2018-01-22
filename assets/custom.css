@@ -1,5 +1,18 @@
 .header {
   border-bottom: 1px black solid;
+  margin: 0 -38px;
+  background: #CC95C0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body {
+  margin: 0 -400px;
+background: #f7f7f7; /* Old browsers */
+background: -moz-linear-gradient(left, #f7f7f7 14%, #d8ffff 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #f7f7f7 14%,#d8ffff 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #f7f7f7 14%,#d8ffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#d8ffff',GradientType=1 ); /* IE6-9 */
 }
 
 h1 img {
